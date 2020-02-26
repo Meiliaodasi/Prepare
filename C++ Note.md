@@ -4,7 +4,8 @@
    int cookies[3] = {0,1,2};  
    数组名解释为第一个元素的地址： cookies = &cookies[0];  
    用于函数头或函数原型时 int *arr和int arr[]相同   
-2. ```
+2. 
+    ```
    class Autolock {
         public:
             //构造的时候调用lock。
@@ -22,6 +23,6 @@
     一个类只能有且有一个析构函数，如果没有显式的定义，系统会生成一个缺省的析构函数（合成析构函数）  
     析构函数不能重载，每有一次构造函数的调用就会有一次析构函数的调用  
     
-3.inline 内联函数  
-&nbsp;&nbsp;&nbsp;template 模板
+3. inline 内联函数  
+   template 模板
    
