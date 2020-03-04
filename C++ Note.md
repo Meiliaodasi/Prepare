@@ -24,5 +24,11 @@
     析构函数不能重载，每有一次构造函数的调用就会有一次析构函数的调用  
     
 3. inline 内联函数  
-   template 模板
-   
+   template 模板  
+4. 引用变量
+```int  years = 5; 
+   int & my = years;
+   int * we = &years;
+```  
+   my 和 *we 同 years;  
+   &my 和 we 同 &years
