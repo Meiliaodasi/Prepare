@@ -26,7 +26,8 @@
 3. inline 内联函数  
    template 模板  
 4. 引用变量
-```int  years = 5; 
+```
+   int  years = 5; 
    int & my = years;
    int * we = &years;
 ```  
