@@ -32,4 +32,5 @@
    int * we = &years;
 ```  
    my 和 *we 同 years;  
-   &my 和 we 同 &years
+   &my 和 we 同 &years  
+   返回引用时避免返回临时变量的引用或指针，可以返回一个作为参数传递给函数的引用
