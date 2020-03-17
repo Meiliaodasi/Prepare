@@ -15,3 +15,10 @@ sudo chmod 777 android.ipr
 
 问题解决：  
 1.sudo apt-get install m4  
+
+
+
+[ 98% 100457/101515] //frameworks/base/services/appwidget:services.appwidget javac [common]03:46:23 ninja failed with: signal: killed
+
+#### failed to build some targets (03:09:03 (hh:mm:ss)) ####
+
