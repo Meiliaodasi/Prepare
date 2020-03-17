@@ -20,7 +20,12 @@ sudo chmod 777 android.ipr
 
 [ 98% 100457/101515] //frameworks/base/services/appwidget:services.appwidget javac [common]03:46:23 ninja failed with: signal: killed
 
-#### failed to build some targets (03:09:03 (hh:mm:ss)) ####
+问题：  
+#### 1.failed to build some targets (03:09:03 (hh:mm:ss)) （增加内存）
+2.ninja: error: 'out/target/common/obj/JAVA_LIBRARIES/SettingsLib_intermediates/package-res.apk', needed by 'out/target/product/generic/obj/APPS/SystemUI_intermediates/package-res.apk', missing and no known rule to make it
+23:22:00 ninja failed with: exit status 1 （首次单独编译mk出错等问题）  
+执行mma，再不行mmma  
 
-https://segmentfault.com/a/1190000012219689
+
+
 
