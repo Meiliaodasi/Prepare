@@ -22,3 +22,5 @@ sudo chmod 777 android.ipr
 
 #### failed to build some targets (03:09:03 (hh:mm:ss)) ####
 
+https://segmentfault.com/a/1190000012219689
+
