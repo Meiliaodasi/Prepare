@@ -38,4 +38,11 @@
 6. 结构体指针可以通过 -> 操作符 来访问结构体中的成员  
 7. template --- 声明创建模板  
 &emsp;typename --- 表面其后面的符号是一种数据类型，可以用class代替
-&emsp;T --- 通用的数据类型，名称可以替换，通常为大写字母
+&emsp;T --- 通用的数据类型，名称可以替换，通常为大写字母  
+8. 指针类型定义  
+例如： typedef int *pointer;  
+描述： pointer等价于 int *定义;pointer a声明等价于int *a声明  
+函数指针  
+例如： typedef int (*func)(void)  
+描述： func等价于int (*)(void)类型  
+func pf等价于int (*pf)(void)声明，pf是一个函数指针变量  
