@@ -46,3 +46,4 @@
 例如： typedef int (*func)(void)  
 描述： func等价于int (*)(void)类型  
 func pf等价于int (*pf)(void)声明，pf是一个函数指针变量  
+9. fixed arrays decay into pointers when passed to a function, so we have to pass the length as a separate parameter.
