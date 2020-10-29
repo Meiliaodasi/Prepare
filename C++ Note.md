@@ -46,4 +46,6 @@
 例如： typedef int (*func)(void)  
 描述： func等价于int (*)(void)类型  
 func pf等价于int (*pf)(void)声明，pf是一个函数指针变量  
-9. fixed arrays decay into pointers when passed to a function, so we have to pass the length as a separate parameter.
+9. fixed arrays decay into pointers when passed to a function, so we have to pass the length as a separate parameter.  
+10. 指针作为方法参数，指针值传递，指向相同的值，修改实参指向不会改变原指针，修改实参指向的值会改变原指向。  
+11. 
