@@ -49,3 +49,18 @@ func pf等价于int (*pf)(void)声明，pf是一个函数指针变量
 9. fixed arrays decay into pointers when passed to a function, so we have to pass the length as a separate parameter.  
 10. 指针作为方法参数，指针值传递，指向相同的值，修改实参指向不会改变原指针，修改实参指向的值会改变原指向。  
 11. 
+```
+Here’s an example of a class that has a const member variable:
+class Something
+{
+private:
+    const int m_value;
+ 
+public:
+    Something(): m_value{ 5 } // directly initialize our const member variable
+    {
+    } 
+};
+
+This works because we’re allowed to initialize const variables (but not assign to them!).
+```
