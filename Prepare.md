@@ -65,4 +65,12 @@ ViewStub 判断是否已经加载过, 如果通过 setVisibility 来加载,那�
 设置了 inflatedId,需要通过 inflatedId 来查找目标布局的根元素   
 Merge 在根布局使用，减少层级，直接将其中的子元素添加到parent中   
 
+---
+当广播为默认广播时:无视优先级,动态广播接收器优先于静态广播接收器。同优先级的同类广播接收器,静态:先扫描的优先于后扫描的,动态:先注册的优先于后册的   
+#### AsyncTask
+onPreExecute()  这个方法会在后台任务开始执行之间调用,用于进行一些界面上的初始化操作   
+doInBackground(Params...) 子线程中运行,可以处理所有的耗时任务   
+onProgressUpdate(Progress...) 当在后台任务中调用了publishProgress(Progress...)方法后,这个方法会被调用，可以对UI进行操作   
+onPostExecute(Result) 当后台任务执行完毕并通过 return 语句进行返回时,这个方法被调用。可以进行UI操作   
+
 
