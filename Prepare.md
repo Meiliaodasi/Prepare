@@ -157,4 +157,21 @@ public class Singleton {
     }
   return singleton; 
 }
-```
+```   
+#### 描述一次跨进程通讯 
+1.client、proxy、serviceManager、BinderDriver、impl、service    
+2.client 发 起 一 个 请 求 service 信 息 的 Binder 请 求 到 BinderDriver 中，serviceManager发现BinderDiriver 中有自己的请求 然后将 clinet 请求的 service 的数据返回给 client 这样完成了一次 Binder 通讯    
+3.clinet 获取的 service 信息就是该 service 的 proxy，此时调用 proxy 的方法，proxy 将请求发送到 BinderDriver 中，此时 service 的 Binder 线程池循环发现有自己的请求，然后用 impl 就处理这个 请求最后返回，这样完成了第二次 Binder 通讯    
+4.中间 client 可挂起，也可以不挂起，有一个关键字 oneway 可以解决这个   
+
+#### 锁：保证了原子性、可见性、有序性 
+1.自旋锁:可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环。   
+  1.优点:线程被挂起的几率减少，线程执行的连贯性加强。用于对于锁竞争不是 很激烈，锁占用时间很短的并发线程。   
+  2.缺点:过多浪费 CPU 时间，有一个线程连续两次试图获得自旋锁引起死锁    
+2.阻塞锁:没得到锁的线程等待或者挂起，Sycn、Lock   
+3.可重入锁:一个线程可多次获取该锁，Sycn、Lock    
+4.悲观锁:每次去拿数据的时候都认为别人会修改，所以会阻塞全部其他线程 Sycn、Lock    
+5.乐观锁:每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候 会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制   
+6.显示锁和内置锁:显示锁用 Lock 来定义、内置锁用 synchronized。   
+7.读-写锁:为了提高性能，Java 提供了读   
+ 
