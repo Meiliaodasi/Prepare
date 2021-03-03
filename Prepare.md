@@ -26,9 +26,18 @@ private static class SafeHandler extends Handler {
 ```
 #### Service
 1.默认情况,如果没有显示的指service所运行的进程, Service和activity是运行在main thread(UI 主线程)里面   
-service 里面不能执行耗时的操作    
+service 里面不能执行耗时的操作   
+onStartComand()返回的是一个int常量  START_STICKY：若Service被kill,使用Service为开始状态,但Intent没了,若没有新Intent,则null 重启Service    
 2.IntentService 会创建独立的 worker 线程来处理所有的 Intent 请求   
-onHandleIntent(Intent intent)在子线程中执行，请求处理完成后自动停止   
+onHandleIntent(Intent intent)在子线程中执行，请求处理完成后自动停止  
+#### HandlerThread
+        HandlerThread playThread = new HandlerThread("playThread");
+        playThread.start();
+        playHandler = new Handler(playThread.getLooper()) {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                LogUtils.d(TAG, "play thread 子线程 getMessage..");
 #### ContentProvider   
 // 获取ContentResolver   
 ContentResolver resolver =  getContentResolver();   
