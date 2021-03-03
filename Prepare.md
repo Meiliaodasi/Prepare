@@ -27,7 +27,7 @@ private static class SafeHandler extends Handler {
 #### Service
 1.默认情况,如果没有显示的指service所运行的进程, Service和activity是运行在main thread(UI 主线程)里面   
 service 里面不能执行耗时的操作   
-onStartComand()返回的是一个int常量  START_STICKY：若Service被kill,使用Service为开始状态,但Intent没了,若没有新Intent,则null 重启Service    
+onStartComand()返回的是一个int常量  START_STICKY：若Service被kill,使用Service为开始状态,，重传Intent重启Service    
 2.IntentService 会创建独立的 worker 线程来处理所有的 Intent 请求   
 onHandleIntent(Intent intent)在子线程中执行，请求处理完成后自动停止  
 #### HandlerThread
@@ -108,6 +108,10 @@ StringBuilder:字符串变量（线程不安全） 确保单线程下可用，�
 一个进程内可拥有多个线程，进程可开启进程，也可开启线程。   
 一个线程只能属于一个进程，线程可直接使用同进程的资源,线程依赖于进程而存在。   
 
+如何保证线程安全？ 1.synchronized； 2.Object 方法中的 wait,notify； 3.ThreadLocal机制   
+如何实现线程同步？ 1、synchronized 关键字修改的方法。2、synchronized 关键字修饰的语句块 3、使用特殊域变量（volatile）实现线程同步   
+ReentrantLock类实现了Lock，它拥有与synchronized相同的并发性和内存语义且它还具有可扩展性   
+
 ArrayList() : 代表长度可以改变得数组。可以对元素进行随机的访问，向 ArrayList()中插入与删除元素的速度慢。    
 LinkedList(): 在实现中采用链表数据结构。插入和删除速度快，访问速度慢   
 HashMap 不是线程安全的，效率高一点、方法不是Synchronize的要提供外同步，有containsvalue和containsKey方法。   
@@ -116,4 +120,41 @@ ArrayList 是基于数组实现的，ArrayList线程不安全。
 LinkedList 是基于双链表实现的 
 
 数组：是将元素在内存中连续存储的  改变数据个数时，增加、插入、删除数据效率比较低    
-链表：是动态申请内存空间
+链表：是动态申请内存空间   
+
+LruCache 使用一个LinkedHashMap简单的实现内存的缓存，没有软引用， 都是强引用。如果添加的数据大于设置的最大值，就删除最先缓存的数据来调整内存   
+
+饿汉式：
+```
+public class Singleton {
+  // 直接创建对象
+     public static Singleton instance = new Singleton(); 
+     
+  // 私有化构造函数 
+     private Singleton() {}
+     
+   // 返回对象实例 
+   public static Singleton getInstance() { 
+    return instance; 
+    }
+}    
+```
+懒汉式： 
+```
+public class Singleton { 
+  // 声明变量 
+  private static volatile Singleton singleton2 = null; 
+  // 私有构造函数 
+  private Singleton2() {}
+  // 提供对外方法 
+  public static Singleton2 getInstance() {
+   if (singleton2 == null) { 
+    synchronized (Singleton2.class) { 
+      if (singleton == null) { 
+          singleton = new Singleton(); 
+       } 
+     } 
+    }
+  return singleton; 
+}
+```
