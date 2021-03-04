@@ -31,6 +31,17 @@ onStartComand()返回的是一个int常量  START_STICKY：若Service被kill,使
 2.IntentService 会创建独立的 worker 线程来处理所有的 Intent 请求   
 onHandleIntent(Intent intent)在子线程中执行，请求处理完成后自动停止  
 #### HandlerThread
+
+HandlerThread本质上是一个线程类,它继承了Thread。HandlerThread有自己的内部Looper对象,可以进行loop循环。通过获取HandlerThread的looper对象传递给Handler对象,可以在handleMessage()方法中执行异步任务。   
+当有耗时任务进入队列时,则不需要开启新线程,在原有的线程中执行耗时任务即
+可,否则线程阻塞。   
+IntentService封装了HandlerThread和Handler
+
+2、HanlderThread的优缺点
+HandlerThread 优点是异步不会堵塞,减少对性能的消耗。
+HandlerThread 缺点是不能同时继续进行多任务处理,要等待进行处理,处理效率较低。
+HandlerThread 与线程池不同,HandlerThread 是一个串队列,背后只有一个线程。
+
         HandlerThread playThread = new HandlerThread("playThread");
         playThread.start();
         playHandler = new Handler(playThread.getLooper()) {
