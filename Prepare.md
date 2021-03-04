@@ -81,6 +81,31 @@ onPreExecute()  这个方法会在后台任务开始执行之间调用,用于进
 doInBackground(Params...) 子线程中运行,可以处理所有的耗时任务   
 onProgressUpdate(Progress...) 当在后台任务中调用了publishProgress(Progress...)方法后,这个方法会被调用，可以对UI进行操作   
 onPostExecute(Result) 当后台任务执行完毕并通过 return 语句进行返回时,这个方法被调用。可以进行UI操作   
+  
+AsyncTask 封装了两个线程池和一个Handler(SerialExecutor用于排队,THREAD_POOL_EXECUTOR 为真正的执行任务, Handler将工作线程切换到主线程),其必须在UI线程中创建,execute方法必须在UI线程中
+执行,一个任务实例只允许执行一次,执行多次抛出异常,用于网络请求或者简单数据处理   
+
+#### 线程池的相关知识
+Android 中的线程池都是直接或间接通过配置ThreadPoolExecutor来实现不同特性的线程池.Android中最常见的类具有不同特性的线程池分别为FixThreadPool、CachedhreadPool、SingleThreadPool、ScheduleThreadExecutr   
+1).FixThreadPool   
+只有核心线程,并且数量固定的,也不会被回收,所有线程都活动时,因为队列没有限制大小,新任务会等待执行.   
+优点:更快的响应外界请求.
+2).SingleThreadPool   
+只有一个核心线程,确保所有的任务都在同一线程中按序完成.因此不需要处理线程同步的问题.   
+3).CachedThreadPool   
+只有非核心线程,最大线程数非常大,所有线程都活动时会为新任务创建新线程,否则会利用空闲线程(60s 空闲时间,过了就会被回收,所以线程池中有0个线程的可能)处理任务.   
+优点:任何任务都会被立即执行(任务队列 SynchronousQuue 相当于一个空集合);比较适合执行大量的耗时较少的任务.   
+4).ScheduledThreadPool   
+核心线程数固定,非核心线程(闲着没活干会被立即回收数)没有限制.   
+优点:执行定时任务以及有固定周期的重复任务   
+
+#### 内存泄露,怎样查找,怎么产生的内存泄露
+1.Cursor资源对象没关闭造成的内存泄漏   
+2.Bitmap 对象不在使用时调用 recycle()释放内存   
+3.试着使用关于application的context来替代和activity相关的context   
+4.没解除注册   
+5.集合中对象没清理造成的内存泄漏   
+
 #### 一、进程间的通信方式
 1.管道( pipe):管道是一种半双工的通信方式,数据只能单向流动,而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。   
 2.有名管道 (namedpipe) : 有名管道也是半双工的通信方式,但是它允许无亲缘关系进程间的通信。   
