@@ -110,20 +110,20 @@ Android 中的线程池都是直接或间接通过配置ThreadPoolExecutor来实
 2.使用MAT:运行程序,所有功能跑一遍,确保没有改出问题,完全退出程序,手动触发GC,然后使用adb shell dumpsys meminfo packagename -d 命令查看退出界面后Objects下的Views和Activities数目是否为0   
 
 #### Bitmap 使用注意
-1、要选择合适的图片规格(bitmap 类型):
-ALPHA_8
-每个像素占用 1byte 内存ARGB_4444 每个像素占用 2byte 内存
-ARGB_8888 每个像素占用 4byte 内存(默认)
-RGB_565 每个像素占用 2byte 内存
-2、降低采样率。BitmapFactory.Options 参数 inSampleSize 的使用,先把
-options.inJustDecodeBounds 设为 true,只是去读取图片的大小,在拿到图片的
-大小之后和要显示的大小做比较通过 calculateInSampleSize()函数计算
-inSampleSize 的具体值,得到值之后。options.inJustDecodeBounds 设为 false
-读图片资源。
-3、复用内存。即,通过软引用(内存不够的时候才会回收掉),复用内存块,不
-需要再重新给这个 bitmap 申请一块新的内存,避免了一次内存的分配和回收,
-从而改善了运行效率。
-4、使用 recycle()方法及时回收内存。
+
+1、要选择合适的图片规格（bitmap类型）：
+
+ALPHA_8   每个像素占用1byte内存        
+ARGB_4444 每个像素占用2byte内存       
+ARGB_8888 每个像素占用4byte内存（默认）      
+RGB_565 每个像素占用2byte内存
+
+2、降低采样率。BitmapFactory.Options 参数inSampleSize的使用，先把options.inJustDecodeBounds设为true，只是去读取图片的大小，在拿到图片的大小之后和要显示的大小做比较通过calculateInSampleSize()函数计算inSampleSize的具体值，得到值之后。options.inJustDecodeBounds设为false读图片资源。
+
+3、复用内存。即，通过软引用(内存不够的时候才会回收掉)，复用内存块，不需要再重新给这个bitmap申请一块新的内存，避免了一次内存的分配和回收，从而改善了运行效率。
+
+4、使用recycle()方法及时回收内存。
+
 5、压缩图片。
 
 #### 一、进程间的通信方式
