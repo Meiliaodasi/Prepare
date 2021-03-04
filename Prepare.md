@@ -137,6 +137,22 @@ RGB_565 每个像素占用2byte内存
 
 5、压缩图片。
 
+ #### 事件分发流程
+ ```
+public boolean dispatchTouchEvent(MotionEvent ev) {
+    boolean consume = false;
+    if (onInterceptTouchEvent(ev)) {
+        consume = onTouchEvent(ev);
+    } else {
+        coonsume = child.dispatchTouchEvent(ev);
+    }
+    return consume;
+}
+```
+通过上面的伪代码，我们可以大致了解点击事件的传递规则：对应一个根ViewGroup来说，点击事件产生后，首先会传递给它，这是它的dispatchTouchEvent就会被调用，如果这个ViewGroup的onInterceptTouchEvent方法返回true就表示它要拦截当前事件，接着事件就会交给这个ViewGroup处理，这时如果它的mOnTouchListener被设置，则onTouch会被调用，否则onTouchEvent会被调用。   
+在onTouchEvent中，如果设置了mOnCLickListener，则onClick会被调用。只要View的CLICKABLE和LONG_CLICKABLE有一个为true，onTouchEvent()就会返回true消耗这个事件。   
+如果这个ViewGroup的onInterceptTouchEvent方法返回false就表示它不拦截当前事件，这时当前事件就会继续传递给它的子元素，接着子元素的dispatchTouchEvent方法就会被调用，如此反复直到事件被最终处理。
+
 #### 一、进程间的通信方式
 1.管道( pipe):管道是一种半双工的通信方式,数据只能单向流动,而且只能在具有亲缘关系的进程间使用。进程的亲缘关系通常是指父子进程关系。   
 2.有名管道 (namedpipe) : 有名管道也是半双工的通信方式,但是它允许无亲缘关系进程间的通信。   
