@@ -184,6 +184,22 @@ StringBuilder:字符串变量（线程不安全） 确保单线程下可用，�
 如何实现线程同步？ 1、synchronized 关键字修改的方法。2、synchronized 关键字修饰的语句块 3、使用特殊域变量（volatile）实现线程同步   
 ReentrantLock类实现了Lock，它拥有与synchronized相同的并发性和内存语义且它还具有可扩展性   
 
+#### 集合
+Set和List对比：
+
+Set：检索元素效率低下，删除和插入效率高，插入和删除不会引起元素位置改变。
+
+List：和数组类似，List可以动态增长，查找元素效率高，插入删除元素效率低，因为会引起其他元素位置改变。
+
+Map适合储存键值对的数据。
+
+线程安全集合类与非线程安全集合类
+
+LinkedList、ArrayList、HashSet是非线程安全的，Vector是线程安全的;
+
+HashMap是非线程安全的，HashTable是线程安全的;
+
+StringBuilder是非线程安全的，StringBuffer是线程安全的。   
 ArrayList() : 代表长度可以改变得数组。可以对元素进行随机的访问，向 ArrayList()中插入与删除元素的速度慢。    
 LinkedList(): 在实现中采用链表数据结构。插入和删除速度快，访问速度慢   
 HashMap 不是线程安全的，效率高一点、方法不是Synchronize的要提供外同步，有containsvalue和containsKey方法。   
