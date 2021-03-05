@@ -279,3 +279,16 @@ public class Singleton {
 6.显示锁和内置锁:显示锁用 Lock 来定义、内置锁用 synchronized。   
 7.读-写锁:为了提高性能，Java 提供了读   
  
+#### 反射
+
+Java 中的反射首先是能够获取到Java中要反射类的字节码， 获取字节码有三种方法：
+
+1.Class.forName(className)
+
+2.类名.class
+
+3.this.getClass()。
+
+然后将字节码中的方法，变量，构造函数等映射成相应的Method、Filed、Constructor等类，这些类提供了丰富的方法可以被我们所使用。
+
+[深入解析Java反射]（https://www.sczyh30.com/posts/Java/java-reflection-1/）
