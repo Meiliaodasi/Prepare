@@ -200,12 +200,28 @@ LinkedList、ArrayList、HashSet是非线程安全的，Vector是线程安全的
 HashMap是非线程安全的，HashTable是线程安全的;
 
 StringBuilder是非线程安全的，StringBuffer是线程安全的。   
-ArrayList() : 代表长度可以改变得数组。可以对元素进行随机的访问，向 ArrayList()中插入与删除元素的速度慢。    
-LinkedList(): 在实现中采用链表数据结构。插入和删除速度快，访问速度慢   
+
 HashMap 不是线程安全的，效率高一点、方法不是Synchronize的要提供外同步，有containsvalue和containsKey方法。   
-Hashtable 线程安全，不允许有null的键和值，效率稍低，方法是是Synchronize的。有contains方法
-ArrayList 是基于数组实现的，ArrayList线程不安全。    
-LinkedList 是基于双链表实现的 
+Hashtable 线程安全，不允许有null的键和值，效率稍低，方法是是Synchronize的。有contains方法   
+SparseArray比HashMap更省内存，在某些条件下性能更好，主要是因为它避免了对key的自动装箱（int转为Integer类型）   
+
+ArrayList与LinkedList的区别和适用场景
+
+Arraylist：
+
+优点：ArrayList是实现了基于动态数组的数据结构,因地址连续，一旦数据存储好了，查询操作效率会比较高（在内存里是连着放的）。
+
+缺点：因为地址连续，ArrayList要移动数据,所以插入和删除操作效率比较低。
+
+LinkedList：
+
+优点：LinkedList基于链表的数据结构，地址是任意的，其在开辟内存空间的时候不需要等一个连续的地址，对新增和删除操作add和remove，LinedList比较占优势。LikedList 适用于要头尾操作或插入指定位置的场景。
+
+缺点：因为LinkedList要移动指针,所以查询操作性能比较低。
+
+适用场景分析：
+
+当需要对数据进行对此访问的情况下选用ArrayList，当要对数据进行多次增加删除修改时采用LinkedList。   
 
 数组：是将元素在内存中连续存储的  改变数据个数时，增加、插入、删除数据效率比较低    
 链表：是动态申请内存空间   
