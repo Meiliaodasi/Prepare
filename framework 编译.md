@@ -26,4 +26,10 @@ frameworks/base/services/java/ 执行mm 编译  services.jar
 
   adb push framework.jar /system/framework/
 
-  adb push services.jar /system/framework/ 
+  adb push services.jar /system/framework/   
+**常见问题**  
+没有classes.jar  make update-api
+
+烧写 adb reboot loader    
+fastboot devices  
+	 fastboot flash system Y:\Di2L\out\target\product\msm8953_64\system.img  
