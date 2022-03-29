@@ -5,7 +5,7 @@
    数组名解释为第一个元素的地址： cookies = &cookies[0];  
    用于函数头或函数原型时 int *arr和int arr[]相同   
 2. 
-    ```
+    ```C++
    class Autolock {
         public:
             //构造的时候调用lock。
