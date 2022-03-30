@@ -3,6 +3,8 @@
 2、Looper通过loop()不断提取触发条件的Message，并将Message交给对应的target handler来处理。  
 3、target handler调用自身的handleMessage()方法来处理Message。
 
+**线程的转换由 Looper 完成，handleMessage() 所在线程由 Looper.loop() 调用者所在线程决定。**
+
 Handler 引起的内存泄露原因以及最佳解决方案  
 将 Handler 定义成静态的内部类，在内部持有 Activity 的弱引用  
 并在Acitivity的onDestroy()中调用handler.removeCallbacksAndMessages(null)及时移除所有消息。  
