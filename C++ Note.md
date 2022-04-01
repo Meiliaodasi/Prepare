@@ -49,7 +49,7 @@ func pf等价于int (*pf)(void)声明，pf是一个函数指针变量
 9. fixed arrays decay into pointers when passed to a function, so we have to pass the length as a separate parameter.  
 10. 指针作为方法参数，指针值传递，指向相同的值，修改实参指向不会改变原指针，修改实参指向的值会改变原指向。  
 11. 
-```
+```C++
 Here’s an example of a class that has a const member variable:
 class Something
 {
@@ -63,4 +63,10 @@ public:
 };
 
 This works because we’re allowed to initialize const variables (but not assign to them!).
-```
+```  
+### 值传递
+形参都是值传递。但是这个值如果是指针的话，是可以改变指针指向内容的值，即实参的值。这个要弄清两个概念：指针和指针指向的数据（地址和值）。  
+形参的值是实参的地址，并不是实参的值，所以形参的值的改变只是指针的改变，即指向数据的地址改变，并不是指针指向数据的改变。  
+### 常量
+指针指向的常量存储区是不允许修改的  
+
