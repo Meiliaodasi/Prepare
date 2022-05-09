@@ -1,0 +1,1 @@
+adn shell dumpsys location
