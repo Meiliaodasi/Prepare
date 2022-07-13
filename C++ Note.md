@@ -65,7 +65,7 @@ public:
 This works because we’re allowed to initialize const variables (but not assign to them!).
 ```  
 ### 值传递
-形参都是值传递。但是这个值如果是指针的话，是可以改变指针指向内容的值，即实参的值。这个要弄清两个概念：指针和指针指向的数据（地址和值）。  
+形参都是值传递。但是这个值如果是指针的话，是可以改变指针指向内容的值，即实参的值（比如1.返回指针2.二维指针条件时）。这个要弄清两个概念：指针和指针指向的数据（地址和值）。  
 如果形参的值是实参的地址，并不是实参的值，所以形参的值的改变只是指针的改变，即指向数据的地址改变，并不是指针指向数据的改变，实参的地址也不会被改变。  
 [指针作为函数参数](https://blog.csdn.net/qq_33706673/article/details/84669784)  
 [字符串常量](https://blog.csdn.net/coutamg/article/details/53453909)
