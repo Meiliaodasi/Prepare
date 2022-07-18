@@ -185,6 +185,9 @@ StringBuilder:字符串变量（线程不安全） 确保单线程下可用，�
 一个进程内可拥有多个线程，进程可开启进程，也可开启线程。   
 一个线程只能属于一个进程，线程可直接使用同进程的资源,线程依赖于进程而存在。   
 
+线程间通信 Handler、runOnUiThread、View.post(Runnable r) 、AsyncTask 子线程间(Handler)  
+进程间通信IPC Bundle、文件共享、Message、AIDL、ContentProvider、Socket  
+
 如何保证线程安全？ 1.synchronized； 2.Object 方法中的 wait,notify； 3.ThreadLocal机制   
 如何实现线程同步？ 1、synchronized 关键字修改的方法。2、synchronized 关键字修饰的语句块 3、使用特殊域变量（volatile）实现线程同步   
 ReentrantLock类实现了Lock，它拥有与synchronized相同的并发性和内存语义且它还具有可扩展性   
