@@ -8,4 +8,4 @@ gps数据从modem到AP
 AGPS（Assisted GPS）辅助全球卫星定位系统是结合GSM或GPRS与传统卫星定位，利用基站发送辅助卫星信息以缩减GPS芯片获取卫星信号的延迟时间。  
 
 ![GPS框架](https://github.com/Meiliaodasi/Prepare/blob/master/image/GPS%E6%A1%86%E6%9E%B6.png?raw=true)
-
+![上报位置](https://github.com/Meiliaodasi/Prepare/blob/master/image/%E4%B8%8A%E6%8A%A5%E4%BD%8D%E7%BD%AE.png?raw=true)
