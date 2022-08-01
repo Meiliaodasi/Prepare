@@ -192,6 +192,7 @@ StringBuilder:字符串变量（线程不安全） 确保单线程下可用，�
 如何保证线程安全？ 1.synchronized； 2.Object 方法中的 wait,notify； 3.ThreadLocal机制   
 如何实现线程同步？ 1、synchronized 关键字修改的方法。2、synchronized 关键字修饰的语句块 3、使用特殊域变量（volatile）实现线程同步   
 ReentrantLock类实现了Lock，它拥有与synchronized相同的并发性和内存语义且它还具有可扩展性   
+区别 volatile 仅能使用在变量级别，synchronized 则可以使用在变量、方法、和类级别的。 2.volatile 仅能实现变量的修改可见性，并不能保证原子性。3.volatile 不会造成线程的阻塞  
 
 #### 集合
 Set和List对比：
