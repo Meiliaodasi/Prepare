@@ -4,6 +4,7 @@
 3、target handler调用自身的handleMessage()方法来处理Message。
 
 **线程的转换由 Looper 完成，handleMessage() 所在线程由 Looper.loop() 调用者所在线程决定。**  
+一个线程可以有多个 handler，但只能有一个Looper 和一个 MessageQueue  
 ##### 创建Message的最佳实例  
 1. 通过 Message 的静态方法 Message.obtain()获取；
 2. 通过 Handler 的公有方法 handler.obtainMessage()
